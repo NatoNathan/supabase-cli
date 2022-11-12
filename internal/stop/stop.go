@@ -33,7 +33,7 @@ func Run(ctx context.Context, backup bool, fsys afero.Fs) error {
 			return err
 		}
 		if err := utils.AssertSupabaseDbIsRunning(); err != nil {
-			fmt.Println(utils.Aqua("supabase") + " local development setup is already stopped.")
+			fmt.Fprintln(os.Stderr,utils.Aqua("supabase") + " local development setup is already stopped.")
 			return nil
 		}
 	}
@@ -48,7 +48,7 @@ func Run(ctx context.Context, backup bool, fsys afero.Fs) error {
 	if err := stop(ctx); err != nil {
 		return err
 	}
-	fmt.Println("Stopped " + utils.Aqua("supabase") + " local development setup.")
+	fmt.Fprintln(os.Stderr,"Stopped " + utils.Aqua("supabase") + " local development setup.")
 
 	if !backup {
 		// Remove other branches

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/spf13/afero"
 	"github.com/supabase/cli/internal/utils"
@@ -52,6 +53,6 @@ func Run(ctx context.Context, slug string, projectRefArg string, fsys afero.Fs) 
 		}
 	}
 
-	fmt.Println("Deleted Function " + utils.Aqua(slug) + " from project " + utils.Aqua(projectRef) + ".")
+	fmt.Fprintln(os.Stderr,"Deleted Function " + utils.Aqua(slug) + " from project " + utils.Aqua(projectRef) + ".")
 	return nil
 }

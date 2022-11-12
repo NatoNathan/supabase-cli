@@ -19,7 +19,7 @@ Enter your access token: `, utils.GetSupabaseDashboardURL())
 
 	scanner := bufio.NewScanner(stdin)
 	if !scanner.Scan() {
-		fmt.Println("Cancelled " + utils.Aqua("supabase login") + ".")
+		fmt.Fprintln(os.Stderr,"Cancelled " + utils.Aqua("supabase login") + ".")
 		return nil
 	}
 

@@ -39,6 +39,6 @@ func Run(ctx context.Context, slug string, fsys afero.Fs) error {
 		}
 	}
 
-	fmt.Println("Created new Function at " + utils.Bold(funcDir))
+	fmt.Fprintln(os.Stderr,"Created new Function at " + utils.Bold(funcDir))
 	return nil
 }

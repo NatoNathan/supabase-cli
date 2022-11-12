@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 	"path/filepath"
 
 	"github.com/spf13/afero"
@@ -13,7 +14,7 @@ import (
 
 func Run(ctx context.Context, dryRun bool, username, password, database string, fsys afero.Fs) error {
 	if dryRun {
-		fmt.Println("DRY RUN: migrations will *not* be pushed to the database.")
+		fmt.Fprintln(os.Stderr,"DRY RUN: migrations will *not* be pushed to the database.")
 	}
 	if err := utils.LoadConfigFS(fsys); err != nil {
 		return err
@@ -62,7 +63,7 @@ Try running `+utils.Aqua("supabase migration new")+".", err)
 	}
 
 	if !dryRun {
-		fmt.Println("Applying unapplied migrations...")
+		fmt.Fprintln(os.Stderr,"Applying unapplied migrations...")
 	}
 
 	for i, migration := range migrations {
@@ -114,6 +115,6 @@ Try running `+utils.Aqua("supabase migration new")+".", err)
 		}
 	}
 
-	fmt.Println("Finished " + utils.Aqua("supabase db push") + ".")
+	fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase db push") + ".")
 	return nil
 }

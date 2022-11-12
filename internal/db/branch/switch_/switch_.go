@@ -46,11 +46,11 @@ func Run(ctx context.Context, target string, fsys afero.Fs, options ...func(*pgx
 
 	// 3. Switch Postgres database
 	if currBranch == target {
-		fmt.Println("Already on branch " + utils.Aqua(target) + ".")
+		fmt.Fprintln(os.Stderr,"Already on branch " + utils.Aqua(target) + ".")
 	} else if err := switchDatabase(ctx, currBranch, target, options...); err != nil {
 		return errors.New("Error switching to branch " + utils.Aqua(target) + ": " + err.Error())
 	} else {
-		fmt.Println("Switched to branch " + utils.Aqua(target) + ".")
+		fmt.Fprintln(os.Stderr,"Switched to branch " + utils.Aqua(target) + ".")
 	}
 
 	// 4. Update current branch

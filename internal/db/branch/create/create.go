@@ -43,7 +43,7 @@ func Run(branch string, fsys afero.Fs) error {
 		return err
 	}
 
-	fmt.Println("Created branch " + utils.Aqua(branch) + ".")
+	fmt.Fprintln(os.Stderr,"Created branch " + utils.Aqua(branch) + ".")
 	return nil
 }
 

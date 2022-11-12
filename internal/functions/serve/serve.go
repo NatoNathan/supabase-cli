@@ -100,7 +100,7 @@ func Run(ctx context.Context, slug string, envFilePath string, verifyJWT bool, f
 	// 4. Start Function.
 	localFuncDir := filepath.Join(utils.FunctionsDir, slug)
 	dockerFuncPath := relayFuncDir + "/" + slug + "/index.ts"
-	fmt.Println("Starting " + utils.Bold(localFuncDir))
+	fmt.Fprintln(os.Stderr,"Starting " + utils.Bold(localFuncDir))
 	if _, err := utils.DockerExecOnce(ctx, utils.DenoRelayId, nil, []string{
 		"deno", "cache", dockerFuncPath,
 	}); err != nil {
@@ -108,7 +108,7 @@ func Run(ctx context.Context, slug string, envFilePath string, verifyJWT bool, f
 	}
 
 	{
-		fmt.Println("Serving " + utils.Bold(localFuncDir))
+		fmt.Fprintln(os.Stderr,"Serving " + utils.Bold(localFuncDir))
 
 		env := []string{
 			"SUPABASE_URL=http://" + utils.KongId + ":8000",
@@ -156,6 +156,6 @@ func Run(ctx context.Context, slug string, envFilePath string, verifyJWT bool, f
 		}
 	}
 
-	fmt.Println("Stopped serving " + utils.Bold(localFuncDir))
+	fmt.Fprintln(os.Stderr,"Stopped serving " + utils.Bold(localFuncDir))
 	return nil
 }

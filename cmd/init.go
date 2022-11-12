@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/spf13/afero"
 	"github.com/spf13/cobra"
@@ -19,7 +20,7 @@ var initCmd = &cobra.Command{
 			return err
 		}
 
-		fmt.Println("Finished " + utils.Aqua("supabase init") + ".")
+		fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase init") + ".")
 		return nil
 	},
 }

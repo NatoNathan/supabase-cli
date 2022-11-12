@@ -77,7 +77,7 @@ func Run(ctx context.Context, username, password, database string, fsys afero.Fs
 		return err
 	}
 
-	fmt.Println("Finished " + utils.Aqua("supabase db remote commit") + `.
+	fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase db remote commit") + `.
 WARNING: The diff tool is not foolproof, so you may need to manually rearrange and modify the generated migration.
 Run ` + utils.Aqua("supabase db reset") + ` to verify that the new migration does not generate errors.`)
 	return nil

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/joho/godotenv"
@@ -69,6 +70,6 @@ func Run(ctx context.Context, envFilePath string, args []string, fsys afero.Fs) 
 		}
 	}
 
-	fmt.Println("Finished " + utils.Aqua("supabase secrets set") + ".")
+	fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase secrets set") + ".")
 	return nil
 }

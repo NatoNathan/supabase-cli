@@ -39,7 +39,7 @@ var (
 				return err
 			}
 
-			fmt.Println("Finished " + utils.Aqua("supabase link") + ".")
+			fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase link") + ".")
 			return nil
 		},
 	}
@@ -57,7 +57,7 @@ func init() {
 func PromptPassword(stdin *os.File) string {
 	fmt.Print("Enter your database password: ")
 	bytepw, err := term.ReadPassword(int(stdin.Fd()))
-	fmt.Println()
+	fmt.Fprintln(os.Stderr,' ')
 	if err != nil {
 		return ""
 	}

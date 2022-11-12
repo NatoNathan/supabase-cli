@@ -39,7 +39,7 @@ func Run(ctx context.Context, slug string, projectRefArg string, verifyJWT bool,
 	// 2. Bundle Function.
 	var newFunctionBody string
 	{
-		fmt.Println("Bundling " + utils.Bold(slug))
+		fmt.Fprintln(os.Stderr,"Bundling " + utils.Bold(slug))
 		denoPath, err := utils.GetDenoPath()
 		if err != nil {
 			return err
@@ -111,10 +111,10 @@ func deployFunction(ctx context.Context, projectRef, slug, newFunctionBody strin
 		}
 	}
 
-	fmt.Println("Deployed Function " + utils.Aqua(slug) + " on project " + utils.Aqua(projectRef))
+	fmt.Fprintln(os.Stderr,"Deployed Function " + utils.Aqua(slug) + " on project " + utils.Aqua(projectRef))
 
 	url := fmt.Sprintf("%s/project/%v/functions/%v/details", utils.GetSupabaseDashboardURL(), projectRef, deployedFuncId)
-	fmt.Println("You can inspect your deployment in the Dashboard: " + url)
+	fmt.Fprintln(os.Stderr,"You can inspect your deployment in the Dashboard: " + url)
 
 	return nil
 }

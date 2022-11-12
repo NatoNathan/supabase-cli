@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 
 	"github.com/spf13/afero"
 	"github.com/supabase/cli/internal/hostnames"
@@ -46,7 +47,7 @@ func Run(ctx context.Context, projectRefArg string, includeRawOutput bool, fsys 
 		if err != nil {
 			return err
 		}
-		fmt.Println(status)
+		fmt.Fprintln(os.Stderr,status)
 		return nil
 	}
 }

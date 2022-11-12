@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/spf13/afero"
@@ -51,7 +52,7 @@ func Run(ctx context.Context, projectRefArg string, customHostname string, inclu
 		if err != nil {
 			return err
 		}
-		fmt.Println(status)
+		fmt.Fprintln(os.Stderr,status)
 		return nil
 	}
 }

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/spf13/afero"
 	"github.com/supabase/cli/internal/utils"
@@ -35,6 +36,6 @@ func Run(ctx context.Context, args []string, fsys afero.Fs) error {
 		}
 	}
 
-	fmt.Println("Finished " + utils.Aqua("supabase secrets unset") + ".")
+	fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase secrets unset") + ".")
 	return nil
 }

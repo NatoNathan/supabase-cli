@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	u "net/url"
+	"os"
 	"path/filepath"
 	"strconv"
 
@@ -145,6 +146,6 @@ func Run(url string, fsys afero.Fs, options ...func(*pgx.ConnConfig)) error {
 		return err
 	}
 
-	fmt.Println("Finished " + utils.Aqua("supabase db remote set") + ".")
+	fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase db remote set") + ".")
 	return nil
 }

@@ -30,7 +30,7 @@ func SaveDiff(out, file string, fsys afero.Fs) error {
 		path := new.GetMigrationPath(file)
 		return afero.WriteFile(fsys, path, []byte(out), 0644)
 	} else {
-		fmt.Println(out)
+		fmt.Fprintln(os.Stderr,out)
 	}
 	return nil
 }

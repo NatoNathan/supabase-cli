@@ -31,7 +31,7 @@ func Run(migrationName string, stdin afero.File, fsys afero.Fs) error {
 		}
 	}
 
-	fmt.Println("Created new migration at " + utils.Bold(path) + ".")
+	fmt.Fprintln(os.Stderr,"Created new migration at " + utils.Bold(path) + ".")
 	return nil
 }
 

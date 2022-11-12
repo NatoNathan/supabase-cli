@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 
 	"github.com/spf13/afero"
 	"github.com/supabase/cli/internal/utils"
@@ -33,7 +34,7 @@ func Run(ctx context.Context, projectRefArg string, fsys afero.Fs) error {
 		if resp.StatusCode() != 200 {
 			return errors.New("failed to delete custom hostname config; received: " + resp.Status())
 		}
-		fmt.Println("Deleted custom hostname config successfully.")
+		fmt.Fprintln(os.Stderr,"Deleted custom hostname config successfully.")
 		return nil
 	}
 }

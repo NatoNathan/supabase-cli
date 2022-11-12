@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"os"
 	"path/filepath"
 
 	"github.com/docker/docker/api/types"
@@ -32,7 +33,7 @@ func Run(branch string, fsys afero.Fs) error {
 		return err
 	}
 
-	fmt.Println("Deleted branch " + utils.Aqua(branch) + ".")
+	fmt.Fprintln(os.Stderr,"Deleted branch " + utils.Aqua(branch) + ".")
 	return nil
 }
 

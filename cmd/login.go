@@ -20,7 +20,7 @@ var (
 				return err
 			}
 
-			fmt.Println("Finished " + utils.Aqua("supabase login") + ".")
+			fmt.Fprintln(os.Stderr,"Finished " + utils.Aqua("supabase login") + ".")
 			return nil
 		},
 	}
